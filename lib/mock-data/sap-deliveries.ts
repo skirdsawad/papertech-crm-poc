@@ -1,4 +1,4 @@
-import { SAPDelivery, SAPDeliveryItem, SAPPOD } from '../types/sap'
+import { SAPDelivery, SAPDeliveryItem, SAPPOD, GPSCoordinates, DeliveryTracking } from '../types/sap'
 import { DeliveryStatus } from '../types/enums'
 import { mockSAPOrders } from './sap-orders'
 import { getOrderLines } from './sap-order-lines'
@@ -52,6 +52,58 @@ const receiverNames = [
   'นายสุรชัย ดีงาม',
   'นางมาลี บุญมี'
 ]
+
+// GPS locations for different regions in Thailand
+const thailandLocations = {
+  bangkok: { lat: 13.7563, lng: 100.5018 },
+  central: { lat: 14.3532, lng: 100.5697 },
+  north: { lat: 18.7883, lng: 98.9853 },
+  northeast: { lat: 15.8700, lng: 100.9925 },
+  east: { lat: 13.3611, lng: 100.9847 },
+  south: { lat: 7.8804, lng: 98.3923 }
+}
+
+// Generate GPS tracking data for deliveries
+function generateTracking(status: string, route: string): DeliveryTracking | undefined {
+  // Determine origin (always Bangkok warehouse)
+  const origin: GPSCoordinates = thailandLocations.bangkok
+
+  // Determine destination based on route
+  let destination: GPSCoordinates
+
+  if (route.includes('Central')) {
+    destination = thailandLocations.central
+  } else if (route.includes('North')) {
+    destination = thailandLocations.north
+  } else if (route.includes('Northeast')) {
+    destination = thailandLocations.northeast
+  } else if (route.includes('East')) {
+    destination = thailandLocations.east
+  } else if (route.includes('South')) {
+    destination = thailandLocations.south
+  } else {
+    destination = { lat: origin.lat + (Math.random() - 0.5) * 2, lng: origin.lng + (Math.random() - 0.5) * 2 }
+  }
+
+  // Only add current location for in-transit deliveries
+  let current_location: GPSCoordinates | undefined
+
+  if (status === DeliveryStatus.InTransit) {
+    // Simulate truck position between origin and destination (30% to 70% of the way)
+    const progress = 0.3 + Math.random() * 0.4
+    current_location = {
+      lat: origin.lat + (destination.lat - origin.lat) * progress,
+      lng: origin.lng + (destination.lng - origin.lng) * progress
+    }
+  }
+
+  return {
+    origin,
+    destination,
+    current_location,
+    last_updated: status === DeliveryStatus.InTransit ? new Date() : undefined
+  }
+}
 
 // Generate POD for delivered items
 function generatePOD(status: string): SAPPOD | undefined {
@@ -134,6 +186,8 @@ const generateDeliveries = (): SAPDelivery[] => {
         }
       })
 
+      const route = routes[randomNumber(0, routes.length - 1)]
+
       deliveries.push({
         delivery_no: generateDeliveryNo(deliveryIndex++),
         order_no: order.order_no,
@@ -143,11 +197,12 @@ const generateDeliveries = (): SAPDelivery[] => {
         actual_date: actualDate,
         status: status,
         carrier: carriers[randomNumber(0, carriers.length - 1)],
-        route: routes[randomNumber(0, routes.length - 1)],
+        route: route,
         tracking_no: generateTrackingNo(),
         pod_available: status === DeliveryStatus.Delivered,
         pod: generatePOD(status),
-        items: deliveryItems
+        items: deliveryItems,
+        tracking: generateTracking(status, route)
       })
     }
   })

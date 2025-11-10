@@ -64,6 +64,18 @@ export interface SAPPOD {
   notes?: string
 }
 
+export interface GPSCoordinates {
+  lat: number
+  lng: number
+}
+
+export interface DeliveryTracking {
+  origin: GPSCoordinates
+  destination: GPSCoordinates
+  current_location?: GPSCoordinates
+  last_updated?: Date
+}
+
 export interface SAPDelivery {
   delivery_no: string
   order_no: string
@@ -78,6 +90,7 @@ export interface SAPDelivery {
   pod_available: boolean
   pod?: SAPPOD
   items?: SAPDeliveryItem[]
+  tracking?: DeliveryTracking
 }
 
 export interface SAPInvoice {

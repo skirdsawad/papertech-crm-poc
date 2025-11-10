@@ -2,7 +2,9 @@
 
 import { useEffect } from 'react'
 import { SAPDelivery } from '@/lib/types/sap'
+import { DeliveryStatus } from '@/lib/types/enums'
 import { X, Truck, Calendar, User, FileText, CheckCircle2, Image as ImageIcon, PenTool } from 'lucide-react'
+import DeliveryTrackingMap from '@/components/maps/DeliveryTrackingMap'
 
 interface DeliveryDetailModalProps {
   delivery: SAPDelivery
@@ -138,6 +140,20 @@ export default function DeliveryDetailModal({ delivery, onClose }: DeliveryDetai
                 </div>
               </div>
             </div>
+
+            {/* Real-time Tracking Map - Only for In Transit */}
+            {delivery.status === DeliveryStatus.InTransit && delivery.tracking && (
+              <div className="p-6 border-b border-gray-200 bg-blue-50">
+                <h3 className="text-lg font-semibold text-blue-900 mb-4 flex items-center">
+                  <Truck className="w-5 h-5 mr-2" />
+                  Real-time Tracking
+                </h3>
+                <DeliveryTrackingMap
+                  tracking={delivery.tracking}
+                  deliveryNo={delivery.delivery_no}
+                />
+              </div>
+            )}
 
             {/* Delivery Items */}
             <div className="p-6 border-b border-gray-200">
