@@ -54,9 +54,9 @@ export default function OrderDetailModal({ order, lines, onClose }: OrderDetailM
 
       {/* Modal */}
       <div className="flex min-h-full items-center justify-center p-4">
-        <div className="relative bg-white rounded-lg shadow-xl max-w-5xl w-full max-h-[90vh] overflow-hidden">
+        <div className="relative bg-white rounded-lg shadow-xl max-w-5xl w-full max-h-[90vh] flex flex-col">
           {/* Header */}
-          <div className="bg-primary px-6 py-4 flex items-center justify-between">
+          <div className="bg-primary px-6 py-4 flex items-center justify-between flex-shrink-0">
             <div className="flex items-center space-x-3">
               <Package className="w-6 h-6 text-white" />
               <div>
@@ -73,7 +73,7 @@ export default function OrderDetailModal({ order, lines, onClose }: OrderDetailM
           </div>
 
           {/* Content */}
-          <div className="overflow-y-auto max-h-[calc(90vh-80px)]">
+          <div className="overflow-y-auto flex-1">
             {/* Order Information */}
             <div className="p-6 border-b border-gray-200">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -218,7 +218,7 @@ export default function OrderDetailModal({ order, lines, onClose }: OrderDetailM
           </div>
 
           {/* Footer */}
-          <div className="border-t border-gray-200 px-6 py-4 bg-gray-50">
+          <div className="border-t border-gray-200 px-6 py-4 bg-gray-50 flex-shrink-0">
             <div className="flex justify-end">
               <button
                 onClick={onClose}
