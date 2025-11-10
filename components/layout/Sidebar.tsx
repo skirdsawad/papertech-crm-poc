@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { Home, Building2, Users, ShoppingCart, PanelLeftClose, PanelLeft } from 'lucide-react'
+import { Home, Building2, Users, ShoppingCart, Truck, PanelLeftClose, PanelLeft } from 'lucide-react'
 
 interface NavItem {
   name: string
@@ -112,6 +112,19 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
             >
               <ShoppingCart className="w-5 h-5" />
               {!isCollapsed && <span className="text-sm">Orders</span>}
+            </Link>
+
+            <Link
+              href="/sap/deliveries"
+              className={`flex items-center ${isCollapsed ? 'justify-center' : 'space-x-3'} px-4 py-3 rounded-lg transition-colors ${
+                pathname === '/sap/deliveries'
+                  ? 'bg-primary text-white'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
+              title={isCollapsed ? 'Deliveries & POD' : undefined}
+            >
+              <Truck className="w-5 h-5" />
+              {!isCollapsed && <span className="text-sm">Deliveries & POD</span>}
             </Link>
           </div>
         </div>

@@ -15,3 +15,12 @@ export enum DocumentType {
   CreditMemo = 'Credit Memo',
   DebitMemo = 'Debit Memo'
 }
+
+// Delivery Status
+export enum DeliveryStatus {
+  Planned = 'Planned',
+  InTransit = 'In Transit',
+  Delivered = 'Delivered',
+  Failed = 'Failed',
+  Cancelled = 'Cancelled'
+}

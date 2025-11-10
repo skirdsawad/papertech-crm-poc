@@ -46,14 +46,38 @@ export interface SAPOrderLine {
   size?: string
 }
 
+export interface SAPDeliveryItem {
+  line_no: number
+  material_code: string
+  description: string
+  description_thai: string
+  qty_ordered: number
+  qty_shipped: number
+  uom: string
+}
+
+export interface SAPPOD {
+  signature_url?: string
+  photo_url?: string
+  received_by?: string
+  received_date?: Date
+  notes?: string
+}
+
 export interface SAPDelivery {
   delivery_no: string
+  order_no: string
   customer_no: string
+  customer_name: string
   planned_date: Date
   actual_date?: Date
   status: string
   carrier?: string
+  route?: string
+  tracking_no?: string
   pod_available: boolean
+  pod?: SAPPOD
+  items?: SAPDeliveryItem[]
 }
 
 export interface SAPInvoice {
