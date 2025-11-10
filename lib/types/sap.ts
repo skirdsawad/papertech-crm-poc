@@ -96,10 +96,16 @@ export interface SAPDelivery {
 export interface SAPInvoice {
   invoice_no: string
   customer_no: string
-  date: Date
-  amount: number
+  customer_name: string
+  invoice_date: Date
   due_date: Date
+  amount: number
+  paid_amount: number
+  balance: number
   status: string
+  payment_terms: string
+  reference_order?: string
+  days_overdue: number
 }
 
 export enum CustomerSegment {

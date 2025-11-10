@@ -45,8 +45,8 @@ export default function TopHeader() {
   }
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-      <div className="px-6 py-3">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)' }}>
+      <div className="px-6 py-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <h2 className="text-lg font-semibold text-primary">PaperTech CRM</h2>

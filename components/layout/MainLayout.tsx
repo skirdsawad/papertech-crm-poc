@@ -51,7 +51,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         isCollapsed={isSidebarCollapsed}
         onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
       />
-      <div className={`${isSidebarCollapsed ? 'ml-20' : 'ml-64'} flex flex-col min-h-screen transition-all duration-300`}>
+      <div className={`${isSidebarCollapsed ? 'ml-16' : 'ml-52'} flex flex-col min-h-screen transition-all duration-300`}>
         <TopHeader />
         <main className="flex-1">
           {children}

@@ -198,7 +198,6 @@ export function getProductBySKU(sku: string): Product | undefined {
 }
 
 export function getRandomProducts(count: number): Product[] {
-  const shuffled = [...mockProducts].sort(() => 0.5 - Math.random())
-
-  return shuffled.slice(0, count)
+  // Return first N products (deterministic for POC)
+  return mockProducts.slice(0, Math.min(count, mockProducts.length))
 }

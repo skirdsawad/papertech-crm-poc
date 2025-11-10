@@ -1,87 +1,45 @@
 import { SAPOrderLine } from '../types/sap'
 import { mockSAPOrders } from './sap-orders'
-import { mockProducts, getRandomProducts } from './products'
+import { mockProducts } from './products'
 
-function randomNumber(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
+// Simple static mapping of order lines
+const orderLinesMap = new Map<string, SAPOrderLine[]>()
 
-function randomElement<T>(array: T[]): T {
-  return array[randomNumber(0, array.length - 1)]
-}
+// Generate simple order lines for each order
+mockSAPOrders.forEach((order) => {
+  const lines: SAPOrderLine[] = []
+  const productsToUse = mockProducts.slice(0, order.items_count)
+  const valuePerItem = Math.floor(order.net_value / order.items_count)
 
-// Generate order lines for each order
-const generateOrderLines = (): Map<string, SAPOrderLine[]> => {
-  const orderLinesMap = new Map<string, SAPOrderLine[]>()
+  productsToUse.forEach((product, index) => {
+    const qty = 100 + (index * 50)
+    const unitPrice = index === productsToUse.length - 1
+      ? Math.floor((order.net_value - (valuePerItem * (productsToUse.length - 1))) / qty)
+      : Math.floor(valuePerItem / qty)
 
-  mockSAPOrders.forEach((order) => {
-    const itemsCount = order.items_count
-    const selectedProducts = getRandomProducts(itemsCount)
-    const lines: SAPOrderLine[] = []
-
-    let remainingValue = order.net_value
-
-    selectedProducts.forEach((product, index) => {
-      const isLastItem = index === selectedProducts.length - 1
-      const qty = randomNumber(50, 500)
-
-      let unitPrice: number
-      if (isLastItem) {
-        // For the last item, calculate unit price to match remaining value
-        unitPrice = Math.round(remainingValue / qty)
-      } else {
-        // Random unit price based on product category
-        const basePrice = product.category === 'Office' ? randomNumber(100, 300) :
-                         product.category === 'Carbonless' ? randomNumber(500, 1500) :
-                         product.category === 'Packaging' ? randomNumber(200, 800) :
-                         randomNumber(300, 2000)
-
-        unitPrice = basePrice
-      }
-
-      const netPrice = qty * unitPrice
-
-      if (!isLastItem) {
-        remainingValue -= netPrice
-      }
-
-      const gsm = product.gsm_options ? randomElement(product.gsm_options) : undefined
-      const size = product.size_options ? randomElement(product.size_options) : undefined
-
-      lines.push({
-        line_no: (index + 1) * 10,
-        material_code: product.sku,
-        description: product.name_english,
-        description_thai: product.name_thai,
-        qty: qty,
-        uom: product.unit,
-        unit_price: unitPrice,
-        net_price: netPrice,
-        gsm: gsm,
-        size: size
-      })
+    lines.push({
+      line_no: (index + 1) * 10,
+      material_code: product.sku,
+      description: product.name_english,
+      description_thai: product.name_thai,
+      qty: qty,
+      uom: product.unit,
+      unit_price: unitPrice,
+      net_price: qty * unitPrice,
+      gsm: product.gsm_options?.[0],
+      size: product.size_options?.[0]
     })
-
-    orderLinesMap.set(order.order_no, lines)
   })
 
-  return orderLinesMap
-}
+  orderLinesMap.set(order.order_no, lines)
+})
 
-export const orderLinesMap: Map<string, SAPOrderLine[]> = generateOrderLines()
-
-// Helper function to get order lines by order number
 export function getOrderLines(orderNo: string): SAPOrderLine[] {
   return orderLinesMap.get(orderNo) || []
 }
 
-// Helper function to get order with lines
-export function getOrderWithLines(orderNo: string) {
-  const order = mockSAPOrders.find(o => o.order_no === orderNo)
-  const lines = getOrderLines(orderNo)
+export function getOrderLine(orderNo: string, lineNo: number): SAPOrderLine | undefined {
+  const lines = orderLinesMap.get(orderNo)
 
-  return {
-    order,
-    lines
-  }
+  return lines?.find(line => line.line_no === lineNo)
 }

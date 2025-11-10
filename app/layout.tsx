@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Prompt } from "next/font/google";
+import { Figtree, Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
 
-const prompt = Prompt({
+const figtree = Figtree({
   weight: ['300', '400', '500', '600', '700'],
-  subsets: ["latin", "thai"],
+  subsets: ["latin"],
   display: 'swap',
+  variable: '--font-figtree',
+});
+
+const notoSansThai = Noto_Sans_Thai({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ["thai"],
+  display: 'swap',
+  variable: '--font-noto-sans-thai',
 });
 
 export const metadata: Metadata = {
@@ -20,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={prompt.className}>{children}</body>
+      <body className={`${figtree.variable} ${notoSansThai.variable} font-sans`}>{children}</body>
     </html>
   );
 }

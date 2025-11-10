@@ -24,3 +24,12 @@ export enum DeliveryStatus {
   Failed = 'Failed',
   Cancelled = 'Cancelled'
 }
+
+// Invoice Status
+export enum InvoiceStatus {
+  Open = 'Open',
+  Paid = 'Paid',
+  Overdue = 'Overdue',
+  PartiallyPaid = 'Partially Paid',
+  Cancelled = 'Cancelled'
+}

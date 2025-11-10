@@ -1,0 +1,192 @@
+[
+  {
+    "customer_no": "SAP000001",
+    "sales_org": "1000",
+    "legal_name": "บริษัท สยามกระดาษ จำกัด",
+    "tax_id": "1000000000000",
+    "payment_terms": "NET 30",
+    "credit_limit": 5000000,
+    "credit_exposure": 3500000,
+    "credit_available": 1500000,
+    "overdue_aging": {
+      "bucket_0_30": 150000,
+      "bucket_31_60": 80000,
+      "bucket_61_90": 0,
+      "bucket_90_plus": 0
+    },
+    "negotiated_pricing_active": true,
+    "segment": "Publishing",
+    "territory": "Bangkok"
+  },
+  {
+    "customer_no": "SAP000002",
+    "sales_org": "1000",
+    "legal_name": "บริษัท ไทยแพ็คเกจจิ้ง จำกัด",
+    "tax_id": "1000000011111",
+    "payment_terms": "NET 45",
+    "credit_limit": 8000000,
+    "credit_exposure": 6200000,
+    "credit_available": 1800000,
+    "overdue_aging": {
+      "bucket_0_30": 200000,
+      "bucket_31_60": 120000,
+      "bucket_61_90": 50000,
+      "bucket_90_plus": 0
+    },
+    "negotiated_pricing_active": true,
+    "segment": "Packaging",
+    "territory": "Bangkok"
+  },
+  {
+    "customer_no": "SAP000003",
+    "sales_org": "1000",
+    "legal_name": "บริษัท กรุงเทพพริ้นติ้ง จำกัด",
+    "tax_id": "1000000022222",
+    "payment_terms": "NET 30",
+    "credit_limit": 3000000,
+    "credit_exposure": 1500000,
+    "credit_available": 1500000,
+    "overdue_aging": {
+      "bucket_0_30": 100000,
+      "bucket_31_60": 0,
+      "bucket_61_90": 0,
+      "bucket_90_plus": 0
+    },
+    "negotiated_pricing_active": false,
+    "segment": "Printing",
+    "territory": "Bangkok"
+  },
+  {
+    "customer_no": "SAP000004",
+    "sales_org": "1000",
+    "legal_name": "บริษัท นครสวรรค์เปเปอร์ จำกัด",
+    "tax_id": "1000000033333",
+    "payment_terms": "NET 60",
+    "credit_limit": 6000000,
+    "credit_exposure": 4800000,
+    "credit_available": 1200000,
+    "overdue_aging": {
+      "bucket_0_30": 180000,
+      "bucket_31_60": 90000,
+      "bucket_61_90": 60000,
+      "bucket_90_plus": 30000
+    },
+    "negotiated_pricing_active": true,
+    "segment": "Distribution",
+    "territory": "Central"
+  },
+  {
+    "customer_no": "SAP000005",
+    "sales_org": "1000",
+    "legal_name": "บริษัท อมรพริ้นติ้งแอนด์พับลิชชิ่ง จำกัด",
+    "tax_id": "1000000044444",
+    "payment_terms": "NET 30",
+    "credit_limit": 7500000,
+    "credit_exposure": 5000000,
+    "credit_available": 2500000,
+    "overdue_aging": {
+      "bucket_0_30": 120000,
+      "bucket_31_60": 60000,
+      "bucket_61_90": 0,
+      "bucket_90_plus": 0
+    },
+    "negotiated_pricing_active": true,
+    "segment": "Publishing",
+    "territory": "Bangkok"
+  },
+  {
+    "customer_no": "SAP000006",
+    "sales_org": "1000",
+    "legal_name": "บริษัท เชียงใหม่คอนเวอร์ติ้ง จำกัด",
+    "tax_id": "1000000055555",
+    "payment_terms": "NET 45",
+    "credit_limit": 4500000,
+    "credit_exposure": 2700000,
+    "credit_available": 1800000,
+    "overdue_aging": {
+      "bucket_0_30": 90000,
+      "bucket_31_60": 45000,
+      "bucket_61_90": 0,
+      "bucket_90_plus": 0
+    },
+    "negotiated_pricing_active": false,
+    "segment": "Converting",
+    "territory": "North"
+  },
+  {
+    "customer_no": "SAP000007",
+    "sales_org": "1000",
+    "legal_name": "บริษัท ภูเก็ตเปเปอร์ดิสทริบิวชั่น จำกัด",
+    "tax_id": "1000000066666",
+    "payment_terms": "NET 30",
+    "credit_limit": 5500000,
+    "credit_exposure": 4200000,
+    "credit_available": 1300000,
+    "overdue_aging": {
+      "bucket_0_30": 160000,
+      "bucket_31_60": 80000,
+      "bucket_61_90": 40000,
+      "bucket_90_plus": 0
+    },
+    "negotiated_pricing_active": true,
+    "segment": "Distribution",
+    "territory": "South"
+  },
+  {
+    "customer_no": "SAP000008",
+    "sales_org": "1000",
+    "legal_name": "บริษัท ระยองพริ้นท์เทค จำกัด",
+    "tax_id": "1000000077777",
+    "payment_terms": "NET 60",
+    "credit_limit": 9000000,
+    "credit_exposure": 7200000,
+    "credit_available": 1800000,
+    "overdue_aging": {
+      "bucket_0_30": 200000,
+      "bucket_31_60": 150000,
+      "bucket_61_90": 100000,
+      "bucket_90_plus": 50000
+    },
+    "negotiated_pricing_active": true,
+    "segment": "Printing",
+    "territory": "East"
+  },
+  {
+    "customer_no": "SAP000009",
+    "sales_org": "1000",
+    "legal_name": "บริษัท ขอนแก่นแพ็คเกจจิ้ง จำกัด",
+    "tax_id": "1000000088888",
+    "payment_terms": "NET 30",
+    "credit_limit": 4000000,
+    "credit_exposure": 2400000,
+    "credit_available": 1600000,
+    "overdue_aging": {
+      "bucket_0_30": 80000,
+      "bucket_31_60": 0,
+      "bucket_61_90": 0,
+      "bucket_90_plus": 0
+    },
+    "negotiated_pricing_active": false,
+    "segment": "Packaging",
+    "territory": "Northeast"
+  },
+  {
+    "customer_no": "SAP000010",
+    "sales_org": "1000",
+    "legal_name": "บริษัท สุราษฎร์ธานีกระดาษ จำกัด",
+    "tax_id": "1000000099999",
+    "payment_terms": "NET 45",
+    "credit_limit": 6500000,
+    "credit_exposure": 5200000,
+    "credit_available": 1300000,
+    "overdue_aging": {
+      "bucket_0_30": 170000,
+      "bucket_31_60": 85000,
+      "bucket_61_90": 50000,
+      "bucket_90_plus": 0
+    },
+    "negotiated_pricing_active": true,
+    "segment": "Distribution",
+    "territory": "South"
+  }
+]

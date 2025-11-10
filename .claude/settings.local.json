@@ -7,7 +7,12 @@
       "Bash(npm run dev:*)",
       "Bash(ping:*)",
       "Bash(nul)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(node lib/utils/generate-mock-data.js:*)",
+      "Bash(node:*)",
+      "Bash(node -e:*)"
     ],
     "deny": [],
     "ask": []
