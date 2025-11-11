@@ -162,7 +162,7 @@ export default function Customer360Page() {
 
     invoices.slice(0, 10).forEach(invoice => {
       recentActivity.push({
-        date: invoice.invoice_date,
+        date: invoice.invoice_date.toISOString(),
         type: 'invoice',
         description: `Invoice ${invoice.invoice_no}`,
         amount: invoice.amount
