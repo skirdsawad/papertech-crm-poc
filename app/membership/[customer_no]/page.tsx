@@ -60,7 +60,7 @@ export default function MembershipDetailPage({ params }: PageProps) {
               Customer Not Found
             </h3>
             <p className="text-gray-600 mb-4">
-              The customer membership profile you're looking for doesn't exist.
+              The customer membership profile you&apos;re looking for doesn&apos;t exist.
             </p>
             <button
               onClick={handleBack}
