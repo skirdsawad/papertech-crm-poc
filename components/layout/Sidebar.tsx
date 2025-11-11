@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { Home, Building2, Users, ShoppingCart, Truck, FileText, PanelLeftClose, PanelLeft, BarChart3, Target } from 'lucide-react'
+import { Home, Users, ShoppingCart, Truck, FileText, PanelLeftClose, PanelLeft, Target, Award } from 'lucide-react'
 
 interface NavItem {
   name: string
@@ -24,11 +24,6 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
       name: 'Dashboard',
       href: '/dashboard',
       icon: <Home className="w-6 h-6" />
-    },
-    {
-      name: 'SAP Customers',
-      href: '/sap/customers',
-      icon: <Building2 className="w-6 h-6" />
     }
   ]
 
@@ -80,7 +75,30 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
           })}
         </div>
 
-        {/* SAP Module Section */}
+        {/* CRM Section */}
+        <div className="mt-6">
+          {!isCollapsed && (
+            <h3 className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              CRM
+            </h3>
+          )}
+          <div className="space-y-1">
+            <Link
+              href="/membership"
+              className={`flex items-center ${isCollapsed ? 'justify-center' : 'space-x-2'} px-3 py-2 rounded-lg transition-colors ${
+                pathname.startsWith('/membership')
+                  ? 'bg-primary text-white'
+                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+              }`}
+              title={isCollapsed ? 'Membership & Loyalty' : undefined}
+            >
+              <Award className="w-5 h-5" />
+              {!isCollapsed && <span className="text-sm font-medium">Membership & Loyalty</span>}
+            </Link>
+          </div>
+        </div>
+
+        {/* ERP Integration Section */}
         <div className="mt-6">
           {!isCollapsed && (
             <h3 className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
@@ -97,8 +115,8 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
               }`}
               title={isCollapsed ? 'Customers' : undefined}
             >
-              <Users className="w-4 h-4" />
-              {!isCollapsed && <span className="text-sm">Customers</span>}
+              <Users className="w-5 h-5" />
+              {!isCollapsed && <span className="text-sm font-medium">Customers</span>}
             </Link>
 
             <Link
@@ -110,8 +128,8 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
               }`}
               title={isCollapsed ? 'Orders' : undefined}
             >
-              <ShoppingCart className="w-4 h-4" />
-              {!isCollapsed && <span className="text-sm">Orders</span>}
+              <ShoppingCart className="w-5 h-5" />
+              {!isCollapsed && <span className="text-sm font-medium">Orders</span>}
             </Link>
 
             <Link
@@ -123,8 +141,8 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
               }`}
               title={isCollapsed ? 'Deliveries & POD' : undefined}
             >
-              <Truck className="w-4 h-4" />
-              {!isCollapsed && <span className="text-sm">Deliveries & POD</span>}
+              <Truck className="w-5 h-5" />
+              {!isCollapsed && <span className="text-sm font-medium">Deliveries & POD</span>}
             </Link>
 
             <Link
@@ -136,8 +154,8 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
               }`}
               title={isCollapsed ? 'Invoices & AR' : undefined}
             >
-              <FileText className="w-4 h-4" />
-              {!isCollapsed && <span className="text-sm">Invoices & AR</span>}
+              <FileText className="w-5 h-5" />
+              {!isCollapsed && <span className="text-sm font-medium">Invoices & AR</span>}
             </Link>
           </div>
         </div>
@@ -159,8 +177,8 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
               }`}
               title={isCollapsed ? 'Customer 360°' : undefined}
             >
-              <Target className="w-4 h-4" />
-              {!isCollapsed && <span className="text-sm">Customer 360°</span>}
+              <Target className="w-5 h-5" />
+              {!isCollapsed && <span className="text-sm font-medium">Customer 360°</span>}
             </Link>
           </div>
         </div>

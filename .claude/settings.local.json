@@ -12,7 +12,8 @@
       "Bash(findstr:*)",
       "Bash(node lib/utils/generate-mock-data.js:*)",
       "Bash(node:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(if not exist \"C:\\sources\\papertech-crm-poc\\app\\membership\" mkdir \"C:\\sources\\papertech-crm-poc\\app\\membership\")"
     ],
     "deny": [],
     "ask": []
