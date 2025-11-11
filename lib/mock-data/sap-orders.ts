@@ -8,6 +8,11 @@ export const mockSAPOrders: SAPOrderHeader[] = ordersData.map(order => ({
   delivery_date: order.delivery_date ? new Date(order.delivery_date) : undefined
 }))
 
+// Helper function to get all orders
+export function getAllOrders(): SAPOrderHeader[] {
+  return mockSAPOrders
+}
+
 // Helper function to get orders by customer
 export function getOrdersByCustomer(customerNo: string): SAPOrderHeader[] {
   return mockSAPOrders.filter(order => order.customer_no === customerNo)
